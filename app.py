@@ -50,13 +50,12 @@ class App:
         self.xtrain,self.xtest,self.ytrain,self.ytest = train_test_split(self.X,self.y,train_size=0.8,random_state=42)
           
     def get_ideal(self):
-        match self.metod:
-            case "KNN":
-                self.knn_ideal()
-            case "SVM":
-                self.svm_ideal()    
-            case "Naive Bayes":
-                self.naive_bayes()
+        if self.metod == "KNN":
+            self.knn_ideal()
+        elif self.metod == "SVM":    
+            self.svm_ideal() 
+        else:
+            self.naive_bayes()
                             
     def knn_ideal(self):
         self.knn_param_grid = {'n_neighbors': [3, 5, 7], 'weights': ['uniform', 'distance'], 'p': [1, 2]}    
@@ -120,6 +119,4 @@ class App:
         if uploaded_file is not None:
             self.name = uploaded_file.name
             self.veri = pd.read_csv(uploaded_file)
-app = App()
-app.run()            
 
