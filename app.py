@@ -7,7 +7,6 @@ import pandas as pd
 import seaborn as sns
 from sklearn import svm
 from sklearn.naive_bayes import GaussianNB
-import statsmodels.api as sm
 import numpy as np
 
 class App:
