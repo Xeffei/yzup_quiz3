@@ -119,4 +119,9 @@ class App:
             self.name = uploaded_file.name
             self.veri = pd.read_csv(uploaded_file)
 
+def main():
+    app = App()
+    app.run()
 
+if __name__ == "__main__":
+    main()
