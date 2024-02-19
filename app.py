@@ -3,11 +3,13 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV,train_test_split
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score,precision_score, f1_score,confusion_matrix
+from sklearn.metrics import accuracy_score,precision_score, f1_score,confusion_matrix,recall_score
 import pandas as pd
 import seaborn as sns
 from sklearn import svm
 from sklearn.naive_bayes import GaussianNB
+
+
 
 class App:
     def __init__(self):
@@ -82,6 +84,7 @@ class App:
         self.acc = accuracy_score(self.ytest, self.predict)
         self.prec = precision_score(self.ytest, self.predict)
         self.f1 = f1_score(self.ytest, self.predict)
+        self.rec = recall_score(self.ytest, self.predict)
                        
     def knn(self):
         knc = KNeighborsClassifier(n_neighbors= self.best_knn_params["n_neighbors"],p=self.best_knn_params["p"],weights=self.best_knn_params["weights"])
@@ -90,6 +93,7 @@ class App:
         self.acc = accuracy_score(self.ytest, self.predict)
         self.prec = precision_score(self.ytest, self.predict)
         self.f1 = f1_score(self.ytest, self.predict)
+        self.rec = recall_score(self.ytest, self.predict)
         
     def svm(self):
         svmm = svm.SVC(C= self.best_svm_params["C"],gamma=self.best_svm_params["gamma"],kernel=self.best_svm_params["kernel"])
@@ -98,6 +102,7 @@ class App:
         self.acc = accuracy_score(self.ytest, self.predict)
         self.prec = precision_score(self.ytest, self.predict)
         self.f1 = f1_score(self.ytest, self.predict)
+        self.rec = recall_score(self.ytest, self.predict)
 
     def matrx(self):
         
@@ -109,7 +114,7 @@ class App:
         plt.ylabel('Gerçek Sınıf')
         plt.title('Confusion Matrix')
         st.pyplot(plt)
-        st.write("accuary: ",self.acc," precision: ",self.prec," f1: ",self.f1)
+        st.write("accuary: ",self.acc," precision: ",self.prec," recall: ",self.recall ," f1: ",self.f1)
     
     def dosya_al(self):
         uploaded_file = st.sidebar.file_uploader("CSV dosyasını seçin", type=["csv"])    
