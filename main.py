@@ -1,4 +1,4 @@
-from /mount/src/yzup_quiz3/app import App
+from app import App
 def main():
     app = App()
     app.run()
