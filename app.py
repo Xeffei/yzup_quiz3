@@ -1,5 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV,train_test_split
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
