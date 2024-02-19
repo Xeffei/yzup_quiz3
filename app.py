@@ -26,8 +26,9 @@ class App:
         self.Init_Streamlit_Page()
         self.grafik()
         self.get_ideal()
+        self.korelasyon_m()
         self.matrx()
-
+        
                
     def Init_Streamlit_Page(self):
         self.metod = st.sidebar.selectbox("Select Method", ("KNN","SVM","Naive Bayes"))
@@ -40,7 +41,7 @@ class App:
         self.data_split()
                
     def grafik(self):
-        st.subheader('Korelasyon Matrisi')
+        
         st.subheader('Radius Mean vs Texture Mean')
         fig, ax = plt.subplots()
         sns.scatterplot(x='radius_mean', y='texture_mean', data=self.veri, hue='diagnosis', palette={'M': 'red', 'B': 'blue'}, ax=ax)
@@ -123,3 +124,13 @@ class App:
             self.name = uploaded_file.name
             self.veri = pd.read_csv(uploaded_file)
 
+    def korelasyon_m(self):
+        st.subheader('Korelasyon Matrisi')
+        malignant_data = self.veri[(self.veri['diagnosis'] == "M").replace({'B': 1, 'M': 0})]
+        benign_data = self.veri[(self.veri['diagnosis'] == "B").replace({'B': 1, 'M': 0})]
+        fig, ax = plt.subplots(1, 2, figsize=(20, 12))
+        sns.heatmap(malignant_data.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax[0])
+        ax[0].set_title('Malignant')
+        sns.heatmap(benign_data.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax[1])
+        ax[1].set_title('Benign')
+        st.pyplot(fig)
