@@ -3,11 +3,7 @@ matplotlib
 scikit-learn
 seaborn
 numpy
-streamlit
-seaborn
-matplotlib
 plotly
 pandas
 joblib
-scikit-learn
 statsmodels
