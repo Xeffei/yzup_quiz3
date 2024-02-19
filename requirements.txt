@@ -1,16 +1,3 @@
-numpy
 streamlit
-seaborn
 matplotlib
-plotly
-pandas
-joblib
 scikit-learn
-app.py
-numpy
-pandas
-statsmodels
-scikit-learn
-Pillow
-streamlit
-sklearn
