@@ -114,7 +114,7 @@ class App:
         plt.ylabel('Gerçek Sınıf')
         plt.title('Confusion Matrix')
         st.pyplot(plt)
-        st.write("accuary: ",self.acc," precision: ",self.prec," recall: ",self.recall ," f1: ",self.f1)
+        st.write("accuary: ",self.acc," precision: ",self.prec," recall: ",self.rec ," f1: ",self.f1)
     
     def dosya_al(self):
         uploaded_file = st.sidebar.file_uploader("CSV dosyasını seçin", type=["csv"])    
