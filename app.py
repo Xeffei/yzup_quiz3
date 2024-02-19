@@ -120,5 +120,4 @@ class App:
             self.name = uploaded_file.name
             self.veri = pd.read_csv(uploaded_file)
 
-app = App()
-app.run()
+
