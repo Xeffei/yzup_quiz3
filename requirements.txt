@@ -11,3 +11,4 @@ pandas==1.2.3
 joblib==0.16.0
 scikit-learn
 sklearn
+statsmodels
