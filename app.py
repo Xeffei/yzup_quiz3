@@ -126,8 +126,8 @@ class App:
 
     def korelasyon_m(self):
         st.subheader('Korelasyon Matrisi')
-        malignant_data = self.veri[(self.veri['diagnosis'] == "M").replace({'B': 1, 'M': 0})]
-        benign_data = self.veri[(self.veri['diagnosis'] == "B").replace({'B': 1, 'M': 0})]
+        malignant_data = self.veri[(self.veri['diagnosis'] == "M").replace(1)]
+        benign_data = self.veri[(self.veri['diagnosis'] == "B").replace(0)]
         fig, ax = plt.subplots(1, 2, figsize=(20, 12))
         sns.heatmap(malignant_data.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax[0])
         ax[0].set_title('Malignant')
